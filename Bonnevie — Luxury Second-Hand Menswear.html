@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonnevie — Luxury Second-Hand Menswear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500;600&family=Jost:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="on-home">
+
+    <!-- ── Announcement Bar ─────────────────────────────────── -->
+    <div class="announcement-bar" id="announcementBar" role="region" aria-label="Informasjonsstripe">
+        <button class="ann-arrow ann-arrow--prev" aria-label="Forrige melding">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <div class="ann-text" aria-live="polite" aria-atomic="true">
+            <span class="ann-msg ann-msg--active">1–5 VIRKEDAGER LEVERING I HELE NORGE</span>
+            <span class="ann-msg">BETAL TRYGT MED KLARNA OG VIPPS</span>
+            <span class="ann-msg">TIDLØSE PLAGG · ET NYTT KAPITTEL</span>
+        </div>
+        <button class="ann-arrow ann-arrow--next" aria-label="Neste melding">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- ── Navigation ─────────────────────────────────────── -->
+    <nav class="nav" id="mainNav">
+        <button class="burger" id="burgerBtn" aria-label="Åpne meny">
+            <svg width="28" height="18" viewBox="0 0 28 18" fill="none">
+                <line x1="0" y1="1"  x2="28" y2="1"  stroke="currentColor" stroke-width="1.5"/>
+                <line x1="0" y1="9"  x2="28" y2="9"  stroke="currentColor" stroke-width="1.5"/>
+                <line x1="0" y1="17" x2="28" y2="17" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+        </button>
+
+        <a href="#" class="nav-logo" data-page="home">
+            <img src="logo.png" alt="Bonnevie" class="logo-img">
+        </a>
+
+        <div class="nav-right">
+            <button class="nav-icon" aria-label="Konto">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+            </button>
+            <button class="nav-icon" aria-label="Søk">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+            </button>
+            <button class="nav-icon" aria-label="Handlekurv">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── Sidebar ─────────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Lukk meny">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <line x1="1" y1="1" x2="19" y2="19" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="19" y1="1" x2="1" y2="19" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+        </button>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#" class="sidebar-link" data-page="shop">Nyheter</a>
+                </li>
+                <li id="klaerItem">
+                    <button class="sidebar-link sidebar-link--has-sub" id="klaerTrigger">
+                        Klær
+                        <svg class="sub-arrow" width="8" height="14" viewBox="0 0 8 14" fill="none">
+                            <path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-link" data-page="shop">Sko & Tilbehør</a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-link" data-page="shop">Merker</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Oslo · Est. 2026</span>
+        </div>
+    </aside>
+
+    <!-- ── Submenu: Klær ───────────────────────────────────── -->
+    <div class="submenu" id="submenuKlaer" aria-hidden="true">
+        <h2 class="submenu-title">Klær</h2>
+        <ul class="submenu-list">
+            <li><a href="#" class="submenu-link">Se alle klær</a></li>
+            <li><a href="#" class="submenu-link">Yttertøy</a></li>
+            <li><a href="#" class="submenu-link">Gensere &amp; cardigans</a></li>
+            <li><a href="#" class="submenu-link">Skjorter</a></li>
+            <li><a href="#" class="submenu-link">Blazere &amp; jakker</a></li>
+            <li><a href="#" class="submenu-link">T-skjorter &amp; piqué</a></li>
+        </ul>
+    </div>
+
+    <!-- ── Backdrop ────────────────────────────────────────── -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- ── Pages ──────────────────────────────────────────── -->
+    <main>
+
+        <!-- HOME -->
+        <section class="page active" id="page-home">
+
+            <!-- Seksjon 2: Redaksjonell hero -->
+            <div class="hero hero--editorial" aria-label="Bonnevie — tidløse herreplagg">
+                <!-- heroScroll kept in DOM — script.js attaches click listener -->
+                <button class="hero-scroll" id="heroScroll" aria-hidden="true" tabindex="-1"></button>
+                <div class="hero-inner">
+                    <div class="hero-text-col">
+                        <p class="hero-label">FORHÅNDSEIDE HERREPLAGG · BONNEVIE EST. 2024</p>
+                        <h1 class="hero-heading">Tidløse plagg.<br>Et nytt kapittel.</h1>
+                        <p class="hero-sub">Nøye utvalgte herreplagg fra verdens fremste merker.</p>
+                        <div class="hero-cta">
+                            <a href="#" class="hero-btn hero-btn--primary" data-page="shop">Se utvalget</a>
+                            <button class="hero-btn hero-btn--secondary" onclick="document.getElementById('ukens-utvalg')?.scrollIntoView({behavior:'smooth'})">Nyheter</button>
+                        </div>
+                    </div>
+                    <div class="hero-img-col">
+                        <!-- Hero-bilde i 4:5: redaksjonelt stemningsbilde, minst 1600px bredde,
+                             varmt naturlig lys, detalj av plagg eller stylet flatlay.
+                             Lagre som hero.jpg -->
+                        <img src="hero.jpg" alt="Bonnevie — tidløst herreklær" class="hero-main-img">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seksjon 3: Tillitsstripe -->
+            <section class="trust-stripe" aria-label="Fordeler og garantier" data-reveal>
+                <div class="trust-grid">
+                    <div class="trust-col">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                        <p class="trust-title">Fri frakt over 1500 kr</p>
+                        <p class="trust-sub">Hele Norge, 1–5 virkedager</p>
+                    </div>
+                    <div class="trust-col">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+                        </svg>
+                        <p class="trust-title">Hvert plagg verifisert</p>
+                        <p class="trust-sub">Vurdert og godkjent av oss</p>
+                    </div>
+                    <div class="trust-col">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 .49-3.5L1 10"/>
+                        </svg>
+                        <p class="trust-title">14 dagers åpent kjøp</p>
+                        <p class="trust-sub">Enkel retur og bytte</p>
+                    </div>
+                    <div class="trust-col">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        <p class="trust-title">Forhåndseid og bærekraftig</p>
+                        <p class="trust-sub">Plagg som fortjener nytt liv</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seksjon 4: Nyheter denne uken -->
+            <section class="weekly-new" id="ukens-utvalg" aria-label="Nyheter denne uken" data-reveal>
+                <div class="sec-head sec-head--center">
+                    <p class="sec-label">UKENS UTVALG</p>
+                    <h2 class="sec-heading">Nyheter</h2>
+                    <p class="sec-sub sec-sub--italic">Fersk kuratering, oppdatert hver tirsdag</p>
+                </div>
+                <div class="new-product-grid">
+
+                    <a href="#" class="new-product-card" data-page="shop" aria-label="Loro Piana Cashmere-genser, navy">
+                        <div class="new-product-img">
+                            <span class="tag tag--preowned">Forhåndseid</span>
+                            <span class="tag tag--new">NY</span>
+                        </div>
+                        <div class="new-product-info">
+                            <p class="new-product-brand">Loro Piana</p>
+                            <p class="new-product-name">Cashmere-genser, navy</p>
+                            <p class="new-product-size">Str. M</p>
+                            <div class="new-product-price-row">
+                                <span class="new-product-price">4 200 kr</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="new-product-card" data-page="shop" aria-label="Brunello Cucinelli bomullsskjorte, hvit">
+                        <div class="new-product-img">
+                            <span class="tag tag--preowned">Forhåndseid</span>
+                        </div>
+                        <div class="new-product-info">
+                            <p class="new-product-brand">Brunello Cucinelli</p>
+                            <p class="new-product-name">Bomullsskjorte, hvit</p>
+                            <p class="new-product-size">Str. L</p>
+                            <div class="new-product-price-row">
+                                <span class="new-product-price">2 800 kr</span>
+                                <span class="new-product-price new-product-price--old">3 900 kr</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="new-product-card" data-page="shop" aria-label="Kiton blazer, melert grå">
+                        <div class="new-product-img">
+                            <span class="tag tag--preowned">Forhåndseid</span>
+                            <span class="tag tag--new">NY</span>
+                        </div>
+                        <div class="new-product-info">
+                            <p class="new-product-brand">Kiton</p>
+                            <p class="new-product-name">Blazer, melert grå</p>
+                            <p class="new-product-size">Str. 50</p>
+                            <div class="new-product-price-row">
+                                <span class="new-product-price">9 500 kr</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="new-product-card" data-page="shop" aria-label="Drake's silkehalstørkle, burgund">
+                        <div class="new-product-img">
+                            <span class="tag tag--preowned">Forhåndseid</span>
+                        </div>
+                        <div class="new-product-info">
+                            <p class="new-product-brand">Drake's</p>
+                            <p class="new-product-name">Silkehalstørkle, burgund</p>
+                            <p class="new-product-size">One Size</p>
+                            <div class="new-product-price-row">
+                                <span class="new-product-price">1 200 kr</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+                <div class="sec-cta">
+                    <a href="#" class="btn-dark" data-page="shop">Se hele utvalget</a>
+                </div>
+            </section>
+
+            <!-- Seksjon 5: Kuratert antrekk -->
+            <section class="curated-outfit" aria-label="Kuratert antrekk" data-reveal>
+                <div class="curated-grid">
+                    <div class="curated-img-col">
+                        <!-- Stylet antrekk-bilde: flatlay eller på modell, redaksjonell stil
+                             Lagre som /images/curated-toscana.jpg, min 1200px bredde -->
+                    </div>
+                    <div class="curated-text-col">
+                        <p class="sec-label">KURATERT ANTREKK</p>
+                        <h2 class="curated-heading">Søndagstur i Toscana</h2>
+                        <p class="curated-body">Et lett, lag-på-lag-antrekk bygget for en søndagsformiddag med langsom kaffe og korte gåturer. Hvert plagg er valgt for å fungere alene og sammen — i linjer som ikke krever stell, bare nytes. Totalt satt opp for under 9 000 kroner, forhåndseid med omsorg.</p>
+                        <ul class="curated-items">
+                            <li class="curated-item">
+                                <span class="curated-item-name">Brunello Cucinelli linblåser</span>
+                                <span class="curated-item-price">3 200 kr</span>
+                            </li>
+                            <li class="curated-item">
+                                <span class="curated-item-name">Loro Piana chinos, sandfarget</span>
+                                <span class="curated-item-price">2 400 kr</span>
+                            </li>
+                            <li class="curated-item">
+                                <span class="curated-item-name">Berluti loafers, cognac</span>
+                                <span class="curated-item-price">1 800 kr</span>
+                            </li>
+                            <li class="curated-item">
+                                <span class="curated-item-name">Drake's lin-lommetørkle</span>
+                                <span class="curated-item-price">1 000 kr</span>
+                            </li>
+                        </ul>
+                        <p class="curated-total">Totalt antrekk: 8 400 kr</p>
+                        <a href="#" class="btn-outline curated-cta-btn" data-page="shop">Utforsk antrekket</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seksjon 6: Handle etter kategori -->
+            <section class="category-browse" aria-label="Handle etter kategori" data-reveal>
+                <div class="sec-head sec-head--center">
+                    <p class="sec-label">UTFORSK</p>
+                    <h2 class="sec-heading">Handle etter kategori</h2>
+                </div>
+                <div class="cat-grid">
+                    <a href="#" class="cat-card" data-page="shop" aria-label="Se jakker">
+                        <div class="cat-img"></div>
+                        <div class="cat-caption">
+                            <p class="cat-name">Jakker</p>
+                            <p class="cat-link">Se utvalget →</p>
+                        </div>
+                    </a>
+                    <a href="#" class="cat-card" data-page="shop" aria-label="Se skjorter">
+                        <div class="cat-img"></div>
+                        <div class="cat-caption">
+                            <p class="cat-name">Skjorter</p>
+                            <p class="cat-link">Se utvalget →</p>
+                        </div>
+                    </a>
+                    <a href="#" class="cat-card" data-page="shop" aria-label="Se strikk">
+                        <div class="cat-img"></div>
+                        <div class="cat-caption">
+                            <p class="cat-name">Strikk</p>
+                            <p class="cat-link">Se utvalget →</p>
+                        </div>
+                    </a>
+                    <a href="#" class="cat-card" data-page="shop" aria-label="Se bukser">
+                        <div class="cat-img"></div>
+                        <div class="cat-caption">
+                            <p class="cat-name">Bukser</p>
+                            <p class="cat-link">Se utvalget →</p>
+                        </div>
+                    </a>
+                    <a href="#" class="cat-card" data-page="shop" aria-label="Se sko">
+                        <div class="cat-img"></div>
+                        <div class="cat-caption">
+                            <p class="cat-name">Sko</p>
+                            <p class="cat-link">Se utvalget →</p>
+                        </div>
+                    </a>
+                    <a href="#" class="cat-card" data-page="shop" aria-label="Se tilbehør">
+                        <div class="cat-img"></div>
+                        <div class="cat-caption">
+                            <p class="cat-name">Tilbehør</p>
+                            <p class="cat-link">Se utvalget →</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Seksjon 7: Stilinspirasjon -->
+            <section class="style-inspo" aria-label="Stilinspirasjon" data-reveal>
+                <div class="style-inspo-head">
+                    <div>
+                        <p class="sec-label">STILINSPIRASJON</p>
+                        <h2 class="sec-heading">Måter å bære det på</h2>
+                    </div>
+                    <a href="#" class="style-all-link" data-page="shop">Alle antrekk →</a>
+                </div>
+                <div class="style-scroll-wrap">
+                    <button class="scroll-arrow scroll-arrow--prev" aria-label="Forrige antrekk" id="inspoScrollPrev">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M9 2L4 7l5 5" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="style-scroll" id="inspoScroll">
+                        <a href="#" class="outfit-card" data-page="shop" aria-label="Søndagstur i Toscana">
+                            <div class="outfit-img"></div>
+                            <div class="outfit-info">
+                                <p class="outfit-title">Søndagstur i Toscana</p>
+                                <p class="outfit-meta">4 plagg · fra 8 400 kr</p>
+                            </div>
+                        </a>
+                        <a href="#" class="outfit-card" data-page="shop" aria-label="Kontoret om høsten">
+                            <div class="outfit-img"></div>
+                            <div class="outfit-info">
+                                <p class="outfit-title">Kontoret om høsten</p>
+                                <p class="outfit-meta">5 plagg · fra 11 200 kr</p>
+                            </div>
+                        </a>
+                        <a href="#" class="outfit-card" data-page="shop" aria-label="Lunsj på Aker Brygge">
+                            <div class="outfit-img"></div>
+                            <div class="outfit-info">
+                                <p class="outfit-title">Lunsj på Aker Brygge</p>
+                                <p class="outfit-meta">3 plagg · fra 5 800 kr</p>
+                            </div>
+                        </a>
+                        <a href="#" class="outfit-card" data-page="shop" aria-label="Helg på fjellet">
+                            <div class="outfit-img"></div>
+                            <div class="outfit-info">
+                                <p class="outfit-title">Helg på fjellet</p>
+                                <p class="outfit-meta">4 plagg · fra 9 600 kr</p>
+                            </div>
+                        </a>
+                        <a href="#" class="outfit-card" data-page="shop" aria-label="Bryllup i juni">
+                            <div class="outfit-img"></div>
+                            <div class="outfit-info">
+                                <p class="outfit-title">Bryllup i juni</p>
+                                <p class="outfit-meta">5 plagg · fra 14 300 kr</p>
+                            </div>
+                        </a>
+                        <a href="#" class="outfit-card" data-page="shop" aria-label="Kveld i byen">
+                            <div class="outfit-img"></div>
+                            <div class="outfit-info">
+                                <p class="outfit-title">Kveld i byen</p>
+                                <p class="outfit-meta">3 plagg · fra 7 200 kr</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button class="scroll-arrow scroll-arrow--next" aria-label="Neste antrekk" id="inspoScrollNext">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M5 2l5 5-5 5" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Seksjon 8: Merker vi fører -->
+            <section class="brand-sec" aria-label="Merker vi fører" data-reveal>
+                <div class="sec-head sec-head--center">
+                    <h2 class="brand-heading">Merker vi fører</h2>
+                    <p class="sec-sub sec-sub--italic">Et utvalg fra vår løpende kuratering</p>
+                </div>
+                <div class="brand-grid">
+                    <span class="brand-name">Loro Piana</span>
+                    <span class="brand-name">Brunello Cucinelli</span>
+                    <span class="brand-name">Kiton</span>
+                    <span class="brand-name">Drake's</span>
+                    <span class="brand-name">Hermès</span>
+                    <span class="brand-name">Zegna</span>
+                    <span class="brand-name">Ralph Lauren Purple Label</span>
+                    <span class="brand-name">Tom Ford</span>
+                    <span class="brand-name">Berluti</span>
+                    <span class="brand-name">Boglioli</span>
+                </div>
+            </section>
+
+            <!-- Seksjon 9: Filosofi -->
+            <section class="philosophy" aria-label="Om Bonnevie" data-reveal>
+                <div class="philosophy-inner">
+                    <p class="sec-label">OM BONNEVIE</p>
+                    <h2 class="philosophy-heading">Plagg fortjener et nytt kapittel</h2>
+                    <p class="philosophy-body">Vi tror at eksepsjonelle plagg bør leve videre — ikke havne i en skuff eller forsvinne fra verden. Bonnevie ble til for menn som verdsetter håndverk, tidløs stil og det ansvaret som følger med å kle seg godt. Hvert plagg vi fører er nøye vurdert, ærlig priset og formidlet med respekt for både plagg og kjøper.</p>
+                    <a href="#" class="philosophy-link" data-page="about">Les vår historie →</a>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- SHOP -->
+        <section class="page" id="page-shop">
+            <div class="page-header">
+                <h1>Butikk</h1>
+                <p class="page-subtitle product-count" id="shopCount">8 produkter</p>
+            </div>
+            <div class="product-grid" id="shop-grid" data-filterable data-count-el="shopCount">
+                <div class="product-card" data-farge="kamel" data-storrelse="50" data-pris="4500" data-merke="Loro Piana" data-kategori="yttertoy">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Loro Piana Frakk</h3>
+                        <p class="product-detail">Kamel · Str. 50 · Meget god stand</p>
+                        <p class="product-price">kr 4 500</p>
+                    </div>
+                </div>
+                <div class="product-card" data-farge="marine" data-storrelse="48" data-pris="3200" data-merke="Canali" data-kategori="dress">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Canali Dress</h3>
+                        <p class="product-detail">Mørk marine · Str. 48 · Nesten ny</p>
+                        <p class="product-price">kr 3 200</p>
+                    </div>
+                </div>
+                <div class="product-card" data-farge="kull" data-storrelse="L" data-pris="1800" data-merke="Brioni" data-kategori="gensere">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Brioni Kashmirjakke</h3>
+                        <p class="product-detail">Kull · Str. L · Meget god stand</p>
+                        <p class="product-price">kr 1 800</p>
+                    </div>
+                </div>
+                <div class="product-card" data-farge="brun" data-storrelse="42" data-pris="5500" data-merke="Edward Green" data-kategori="sko">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Edward Green Oxford</h3>
+                        <p class="product-detail">Mørk brun · 9 UK · God stand</p>
+                        <p class="product-price">kr 5 500</p>
+                    </div>
+                </div>
+                <div class="product-card" data-farge="blå" data-storrelse="OS" data-pris="450" data-merke="Drake's" data-kategori="tilbehor">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Drake's Silkeslips</h3>
+                        <p class="product-detail">Blå · One size · Nesten ny</p>
+                        <p class="product-price">kr 450</p>
+                    </div>
+                </div>
+                <div class="product-card" data-farge="krem" data-storrelse="50" data-pris="6800" data-merke="Kiton" data-kategori="blazer">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Kiton Sportsjakke</h3>
+                        <p class="product-detail">Kremhvit · Str. 50 · God stand</p>
+                        <p class="product-price">kr 6 800</p>
+                    </div>
+                </div>
+                <div class="product-card" data-farge="beige" data-storrelse="50" data-pris="2200" data-merke="Incotex" data-kategori="bukser">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Incotex Chinos</h3>
+                        <p class="product-detail">Beige · Str. 50 · God stand</p>
+                        <p class="product-price">kr 2 200</p>
+                    </div>
+                </div>
+                <div class="product-card" data-farge="marine" data-storrelse="M" data-pris="890" data-merke="Sunspel" data-kategori="gensere">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sunspel Merino Genser</h3>
+                        <p class="product-detail">Marine · Str. M · Meget god stand</p>
+                        <p class="product-price">kr 890</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="page" id="page-about">
+            <div class="about-content">
+                <div class="about-logo">
+                    <img src="logo.png" alt="Bonnevie">
+                </div>
+                <div class="about-text">
+                    <h1>Om Bonnevie</h1>
+                    <p class="about-lead">Vi er en Oslo-basert kurator av eksklusivt second-hand herreklær. Hvert plagg er nøye utvalgt for kvalitet, håndverk og tidløs stil.</p>
+                    <p>Bonnevie ble grunnlagt i 2026 med én overbevisning: de beste plaggene fortjener et nytt liv. Vi søker etter stykker fra verdens fremste designere og modehus — plagg laget for å vare generasjoner.</p>
+                    <p>Vår samling bytter mengde med mening. Hvert plagg er personlig inspisert, autentisert og priset rettferdig.</p>
+                    <div class="about-values">
+                        <div class="value">
+                            <h4>Kvalitet</h4>
+                            <p>Vi godtar kun plagg i utmerket stand fra dokumenterte hus.</p>
+                        </div>
+                        <div class="value">
+                            <h4>Autentisitet</h4>
+                            <p>Hvert plagg verifiseres grundig før det inngår i vår samling.</p>
+                        </div>
+                        <div class="value">
+                            <h4>Bærekraft</h4>
+                            <p>Å forlenge livssyklusen til eksepsjonelle plagg er vår kjernefilosofi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="page" id="page-contact">
+            <div class="contact-content">
+                <div class="contact-header">
+                    <h1>Kontakt</h1>
+                    <p class="page-subtitle">Vi er her for å hjelpe</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-block">
+                            <h4>E-post</h4>
+                            <p><a href="mailto:post@bonnevie.no">post@bonnevie.no</a></p>
+                        </div>
+                        <div class="contact-block">
+                            <h4>Sted</h4>
+                            <p>Oslo, Norge</p>
+                        </div>
+                        <div class="contact-block">
+                            <h4>Selg til oss</h4>
+                            <p>Har du kvalitetsplagg du ønsker å selge? Vi er alltid interessert i eksepsjonelle stykker fra anerkjente hus.</p>
+                        </div>
+                    </div>
+                    <form class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Navn</label>
+                            <input type="text" id="name" name="name" placeholder="Ditt navn" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-post</label>
+                            <input type="email" id="email" name="email" placeholder="din@epost.no" autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Emne</label>
+                            <select id="subject" name="subject">
+                                <option value="">Velg emne</option>
+                                <option value="buy">Forespørsel om kjøp</option>
+                                <option value="sell">Selge plagg</option>
+                                <option value="other">Annet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Melding</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Din melding..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-full">Send melding</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <footer class="footer" id="siteFooter">
+        <div class="footer-main">
+
+            <!-- Col 1: Logo -->
+            <div class="footer-col footer-col--brand">
+                <img src="logo.png" alt="Bonnevie" class="footer-brand-logo">
+                <p class="footer-city">Oslo</p>
+            </div>
+
+            <!-- Col 2: Kontakt -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Kontakt oss</h4>
+                <div class="footer-info">
+                    <p>Tlf: +47 XX XX XX XX</p>
+                    <p>E-post:<br><a href="mailto:mail@bonnevie.no">mail@bonnevie.no</a></p>
+                    <p>Org. nr: XXX XXX XXX</p>
+                </div>
+            </div>
+
+            <!-- Col 3: Om oss -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Om oss</h4>
+                <ul class="footer-links">
+                    <li><a href="#" data-page="about">Vår historie</a></li>
+                    <li><a href="#">Kjøp og leveringsvilkår</a></li>
+                    <li><a href="#">Personvernserklæring</a></li>
+                    <li><a href="#">Retur og frakt</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="#" class="social-link" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-copy">© 2026 — BONNEVIE</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
